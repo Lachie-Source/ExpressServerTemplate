@@ -1,4 +1,4 @@
-###  (Optional But Recommended) Download This Extension: https://marketplace.visualstudio.com/items?itemName=humao.rest-client ###
+###  (Optional But Recommended) Download This Extension: https://marketplace.visualstudio.com/items?itemName=humao.rest-client 
 
 GET http://localhost:8000/get/string
 

@@ -3,7 +3,7 @@ const cors = require("cors");
 
 const app = express();
 
-// Here we are configuring express to use body-parser as middle-ware.
+// Here we are configuring express to use cors as middle-ware.
 app.use(cors());
 
 // Setting up the routes
@@ -15,12 +15,10 @@ app.use("/get", routes.GET);
 // Declaring The Port
 const PORT = process.env.PORT || 8000; // The alternitive port can be any four-digit number
 
-app.get("/", (req, res) => {
-  res.send("pp");
-});
+app.get("/", express.static("server/views")); // Here we are loading some html
 
-// Catch 404 and forward to error handler
-app.use((req, res, next) => {
+// Handling 404 Errors
+app.use((req, res) => {
   res.status(404).send("404 Page Not Found");
 });
 
