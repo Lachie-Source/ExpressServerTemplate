@@ -1,0 +1,22 @@
+{
+  "name": "express-template",
+  "version": "0.0.1",
+  "description": "A template for express",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lachie-Source/ExpressServerTemplate.git"
+  },
+  "author": "Bumpy",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
