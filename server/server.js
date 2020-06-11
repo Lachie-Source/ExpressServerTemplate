@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const { inspect } = require("util");
+
 const app = express();
 
 // Here we are configuring express to use cors as middle-ware.
@@ -12,16 +14,21 @@ const routes = { POST: require("./routes/post"), GET: require("./routes/get") };
 app.use("/post", routes.POST);
 app.use("/get", routes.GET);
 
+// This is an example of a post route
+app.post("/inspect", async (req, res) => {
+  try {
+    const code = await eval(req.headers.code);
+    const inspected = await inspect(code);
+    res.status(200).send(inspected);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
+
 // Declaring The Port
 const PORT = process.env.PORT || 8000; // The alternitive port can be any four-digit number
 
 app.get("/", express.static("server/views/example")); // Here we are loading some html
-
-app.put("/auth/submit", (req, res) => {
-  console.log(req);
-  res.send("pp");
-});
-app.use("/auth", express.static("server/views/auth"));
 
 // Handling 404 errors (Always keep this before we listen to the port)
 app.use((req, res) => {
